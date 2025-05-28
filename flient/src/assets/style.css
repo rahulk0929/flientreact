@@ -172,10 +172,10 @@ body {
 }
 
 /* Map */
-.fd-map-placeholder {
+/* .fd-map-placeholder {
     width: 100%;
     height: 500px;
-}
+} */
 
 
 /* Button Customizations */
@@ -492,3 +492,13 @@ body {
 
         
     }
+/* vehcle details */
+/* .map-container-vehicledetails {
+    height: 600px;
+    width: 100%;
+} */
+ /* MapView.css */
+.map-container {
+  height: 500px;
+  width: 100%;
+}

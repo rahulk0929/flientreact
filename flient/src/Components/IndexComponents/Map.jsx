@@ -1,43 +1,69 @@
-import React, { useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
+// import { useEffect, useState } from "react";
+// import { getDeviceLocation } from "../../Api/Mapapi";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-export default function Map({ vehicles }) {
-  useEffect(() => {
-    const map = L.map("fdMap").setView([23.5, 80.5], 5);
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      attribution: "© OpenStreetMap contributors",
-    }).addTo(map);
+export default function MapView() {
+    // const [position, setPosition] = useState(null);
+    // const [address, setAddress] = useState("");
 
-    const markers = [];
+    // useEffect(() => {
+    //   const imei = "356218604801348";
+    //   const token = "277c3e5d7a7d4c0d895cc4a60e435644";
 
-    vehicles.forEach((vehicle) => {
-      const lat = parseFloat(vehicle.Latitude);
-      const lon = parseFloat(vehicle.Longitude);
-
-      if (!isNaN(lat) && !isNaN(lon)) {
-        const marker = L.marker([lat, lon])
-          .addTo(map)
-          .bindPopup(
-            `<strong>${vehicle.Vehicle_Name}</strong><br/>${vehicle.Location}`
-          );
-        markers.push(marker);
-      }
-    });
-
-    return () => {
-      map.eachLayer((layer) => {
-        if (layer instanceof L.Marker || layer instanceof L.TileLayer) {
-          map.removeLayer(layer);
-        }
-      });
-      map.remove();
-    };
-  }, [vehicles]);
+    //   getDeviceLocation(imei, token)
+    //     .then((data) => {
+    //       if (data.code === 0) {
+    //         setPosition([parseFloat(data.lat), parseFloat(data.lng)]);
+    //         setAddress(data.address);
+    //       }
+    //     })
+    //     .catch(console.error);
+    // }, []);
 
   return (
     <div className="col-lg-8">
-      <div id="fdMap" className="fd-map-placeholder" style={{ height: "600px" }} />
+      <MapContainer
+        center={[28.6139, 77.209]} // Delhi's lat, lng
+        zoom={15}
+        scrollWheelZoom={false}
+        className="map-container"
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[28.6139, 77.209]}>
+          <Popup>Delhi</Popup>
+        </Marker>
+      </MapContainer>
+
+      {/* {position && (
+        <MapContainer
+          center={position}
+          zoom={15}
+          scrollWheelZoom={false}
+          className="map-container"
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={position}>
+            <Popup>{address}</Popup>
+          </Marker>
+        </MapContainer>
+      )} */}
     </div>
   );
 }
