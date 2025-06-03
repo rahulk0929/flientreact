@@ -6,9 +6,9 @@ export default function MatserHeader() {
     <>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" href="#">
             <img src="../src/assets/Images/eglogo.png" alt="Logo" />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -34,9 +34,9 @@ export default function MatserHeader() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link className="nav-link" href="#">
                   History
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
@@ -45,7 +45,7 @@ export default function MatserHeader() {
               </li>
               {/* Jobs Dropdown */}
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
                   href="#"
                   id="jobsDropdown"
@@ -54,7 +54,7 @@ export default function MatserHeader() {
                   aria-expanded="false"
                 >
                   Jobs
-                </a>
+                </Link>
                 <ul
                   className="dropdown-menu p-3"
                   aria-labelledby="jobsDropdown"
@@ -62,75 +62,75 @@ export default function MatserHeader() {
                 >
                   <div className="row">
                     <div className="col-md-6">
-                      <a
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-display" /> Control Room
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-truck" /> Job Bookings
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-people" /> Clients
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-geo-alt" /> Site Analytics
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-bar-chart" /> Stoppage Analytics
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-md-6">
-                      <a
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-box" /> All Jobs
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-diagram-3" /> Routes
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-book" /> Address Book
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-geo-alt-fill" /> Site Analytics V2
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         className="dropdown-item d-flex align-items-center gap-2"
                         href="#"
                       >
                         <i className="bi bi-fuel-pump" /> Fuel Station Price
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </ul>
               </li>
               {/* Reminders Dropdown */}
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
                   href="#"
                   id="remindersDropdown"
@@ -139,7 +139,7 @@ export default function MatserHeader() {
                   aria-expanded="false"
                 >
                   Reminders
-                </a>
+                </Link>
                 <ul
                   className="dropdown-menu"
                   aria-labelledby="remindersDropdown"
@@ -170,7 +170,7 @@ export default function MatserHeader() {
               </li>
               {/* Finance Dropdown */}
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
                   href="#"
                   id="financeDropdown"
@@ -179,7 +179,7 @@ export default function MatserHeader() {
                   aria-expanded="false"
                 >
                   Finance
-                </a>
+                </Link>
                 <ul className="dropdown-menu" aria-labelledby="financeDropdown">
                   <li>
                     <a className="dropdown-item" href="#">
@@ -210,7 +210,7 @@ export default function MatserHeader() {
               </li>
               {/* Records Dropdown */}
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
                   href="#"
                   id="recordsDropdown"
@@ -219,17 +219,17 @@ export default function MatserHeader() {
                   aria-expanded="false"
                 >
                   Records
-                </a>
+                </Link>
                 <ul className="dropdown-menu" aria-labelledby="recordsDropdown">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       <i className="bi bi-box-seam" /> Parts Stock Inventory
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       <i className="bi bi-car-front" /> Tyre Management
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
@@ -237,20 +237,20 @@ export default function MatserHeader() {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       <i className="bi bi-clipboard-data" /> Service History
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       <i className="bi bi-fuel-pump" /> Fuel Log
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
               {/* Alarms Dropdown */}
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
                   href="#"
                   id="alarmsDropdown"
@@ -259,23 +259,23 @@ export default function MatserHeader() {
                   aria-expanded="false"
                 >
                   <i className="bi bi-bell" /> Alarms
-                </a>
+                </Link>
                 <ul className="dropdown-menu" aria-labelledby="alarmsDropdown">
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       <i className="bi bi-bell" /> Alarms
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       <i className="bi bi-engine" /> DTCs
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </li>
               {/* Reports Dropdown */}
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle"
                   href="#"
                   id="reportsDropdown"
@@ -284,7 +284,7 @@ export default function MatserHeader() {
                   aria-expanded="false"
                 >
                   Reports
-                </a>
+                </Link>
                 <ul
                   className="dropdown-menu dropdown-menu-end p-3"
                   aria-labelledby="reportsDropdown"
@@ -292,40 +292,40 @@ export default function MatserHeader() {
                 >
                   <div className="row">
                     <div className="col-md-6">
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-download" /> Download Document
-                      </a>
-                      <a className="dropdown-item" href="#">
+                      </Link>
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-upload" /> Uploaders
-                      </a>
-                      <a className="dropdown-item" href="#">
+                      </Link>
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-thermometer" /> Temperature /
                         Humidity
-                      </a>
-                      <a className="dropdown-item" href="#">
+                      </Link>
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-droplet" /> Adblue
-                      </a>
-                      <a className="dropdown-item" href="#">
+                      </Link>
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-graph-up" /> Planned v/s Actual
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-md-6">
-                      <a className="dropdown-item" href="#">
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-file-earmark-bar-graph" /> Download
                         Reports
-                      </a>
-                      <a className="dropdown-item" href="#">
+                      </Link>
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-speedometer" /> Live Fuel Rate
-                      </a>
-                      <a className="dropdown-item" href="#">
+                      </Link>
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-fuel-pump" /> Fuel Analytics
-                      </a>
-                      <a className="dropdown-item" href="#">
+                      </Link>
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-heart-pulse" /> OBD Health
-                      </a>
-                      <a className="dropdown-item" href="#">
+                      </Link>
+                      <Link className="dropdown-item" href="#">
                         <i className="bi bi-pencil-square" /> Custom Reports
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </ul>
@@ -346,14 +346,14 @@ export default function MatserHeader() {
               </form>
               <ul className="navbar-nav flex-row gap-0">
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" href="#">
                     <i className="bi bi-headset" />
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" href="#">
                     <i className="bi bi-person" />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

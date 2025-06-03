@@ -1,4 +1,5 @@
-import MapContext from "./MapContext";
+import MapContext from "./MapContext"
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 const MapContextProvider = ({ children }) => {
@@ -10,5 +11,7 @@ const MapContextProvider = ({ children }) => {
     </MapContext.Provider>
   );
 };
-
+MapContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default MapContextProvider;

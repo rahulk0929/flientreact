@@ -34,7 +34,7 @@ export default function MapView() {
   return (
     <div className="col-lg-8">
       <MapContainer
-        center={[28.6139, 77.209]} // Delhi's lat, lng
+        center={[28.6139, 77.209]}
         zoom={15}
         scrollWheelZoom={false}
         className="map-container"
