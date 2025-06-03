@@ -90,41 +90,6 @@ export default function useWanwayVehicles({ setMapData }) {
     setLoading(false);
   }, [getAccessToken, setMapData]);
 
-  const addVehicle = useCallback(
-    async ({
-      vin,
-      licenseNumber,
-      carOwner,
-      contactUser,
-      contactTel,
-      contractNumber,
-      device
-    }) => {
-      let accessToken = localStorage.getItem("accessToken");
-      if (!isTokenValid()) {
-        accessToken = await getAccessToken();
-        if (!accessToken) {
-          throw new Error("Could not get access token");
-        }
-      }
-      const payload = {
-        vin,
-        licenseNumber,
-        carOwner,
-        contactUser,
-        contactTel,
-        contractNumber,
-        data: [device]
-      };
-      const res = await axios.post(
-        `${SERVICE_URL}/vehicle?accessToken=${accessToken}`,
-        payload,
-        { headers: { "Content-Type": "application/json" } }
-      );
-      return res.data;
-    },
-    [getAccessToken]
-  );
 
   const startPolling = useCallback(() => {
     fetchStatus();
@@ -136,7 +101,6 @@ export default function useWanwayVehicles({ setMapData }) {
     vehicles,
     loading,
     fetchStatus,
-    addVehicle,
     startPolling
   };
 }
