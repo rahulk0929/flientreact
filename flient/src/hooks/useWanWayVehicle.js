@@ -1,10 +1,11 @@
+// src/hooks/useWanwayVehicles.js
 import { useState, useRef, useCallback } from "react";
 import axios from "axios";
 import CryptoJS from "crypto-js";
 
-const SECRET_KEY = "0v5kt32rhdb62915wz7fflbcftfzgh4j";
-const APPID = "Enquiry Gate";
-const SERVICE_URL = "http://localhost:3003/api";
+const SECRET_KEY = process.env.REACT_APP_SECRET_KEY;
+const APPID = process.env.REACT_APP_APPID;
+const SERVICE_URL = process.env.REACT_APP_SERVICE_URL;
 
 function generateSignature(secretKey, time) {
   const md5Key = CryptoJS.MD5(secretKey).toString(CryptoJS.enc.Hex);
@@ -89,6 +90,42 @@ export default function useWanwayVehicles({ setMapData }) {
     setLoading(false);
   }, [getAccessToken, setMapData]);
 
+  const addVehicle = useCallback(
+    async ({
+      vin,
+      licenseNumber,
+      carOwner,
+      contactUser,
+      contactTel,
+      contractNumber,
+      device
+    }) => {
+      let accessToken = localStorage.getItem("accessToken");
+      if (!isTokenValid()) {
+        accessToken = await getAccessToken();
+        if (!accessToken) {
+          throw new Error("Could not get access token");
+        }
+      }
+      const payload = {
+        vin,
+        licenseNumber,
+        carOwner,
+        contactUser,
+        contactTel,
+        contractNumber,
+        data: [device]
+      };
+      const res = await axios.post(
+        `${SERVICE_URL}/vehicle?accessToken=${accessToken}`,
+        payload,
+        { headers: { "Content-Type": "application/json" } }
+      );
+      return res.data;
+    },
+    [getAccessToken]
+  );
+
   const startPolling = useCallback(() => {
     fetchStatus();
     pollingRef.current = setInterval(fetchStatus, 5000);
@@ -99,6 +136,7 @@ export default function useWanwayVehicles({ setMapData }) {
     vehicles,
     loading,
     fetchStatus,
+    addVehicle,
     startPolling
   };
 }

@@ -13,13 +13,29 @@ export default function RealTime() {
     vehicles,
     loading,
     startPolling,
+    addVehicle // you can use this for add vehicle UI if needed
   } = useWanwayVehicles({ setMapData });
-  
+  function statusText(status) {
+    switch (status) {
+      case "静止": return "Stopped";
+      case "行驶": return "Moving";
+      case "离线": return "Offline";
+      case "休眠": return "Sleep";
+      default: return status;
+    }
+  }
 
-  useEffect(() => {
-    startPolling();
-  }, [startPolling]);
-
+  function translateTimeDesc(desc) {
+    if (!desc) return desc;
+    return desc
+      .replace(/刚刚/, "Just now")
+      .replace(/(\d+)分钟前/, "$1 minutes ago")
+      .replace(/(\d+)小时前/, "$1 hours ago")
+      .replace(/(\d+)天前/, "$1 days ago")
+      .replace(/(\d+)秒前/, "$1 seconds ago")
+      .replace(/(\d+)月前/, "$1 months ago")
+      .replace(/(\d+)年前/, "$1 years ago");
+  }
 
   return (
     <div className="col-lg-4">
@@ -76,13 +92,13 @@ export default function RealTime() {
                   IMEI: <span className="fw-semibold">{v.imei}</span>
                 </p>
                 <p className="card-text text-muted mb-1">
-                  Status: <span className="fw-semibold">{v.status}</span>
+                  Status: <span className="fw-semibold">{statusText(v.status)}</span>
                 </p>
                 <span className="badge bg-secondary mb-2">
                   {v.positionType || "N/A"}
                 </span>
                 <p className="mb-1">
-                  <i className="bi bi-clock-fill" /> {v.statusTimeDesc}{" "}
+                  <i className="bi bi-clock-fill" /> {translateTimeDesc(v.statusTimeDesc)}{" "}
                   <strong className="text-success">Speed: {v.speed} km/h</strong>
                 </p>
                 <p className="mb-1">
