@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-// import { useEffect, useState } from "react";
-// import { getDeviceLocation } from "../../Api/Mapapi";
+import { useContext, useEffect } from "react";
+import MapContext from "../../Context/MapContext";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
@@ -13,28 +13,25 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-export default function MapView() {
-    // const [position, setPosition] = useState(null);
-    // const [address, setAddress] = useState("");
+export default function MapView({ popupText = "Current Location" }) {
+  const { MapData } = useContext(MapContext);
+  const { lat, lng } = MapData;
+  const defaultPosition = [28.6139, 77.209];
+  const position = (lat && lng) ? [lat, lng] : defaultPosition;
 
-    // useEffect(() => {
-    //   const imei = "356218604801348";
-    //   const token = "277c3e5d7a7d4c0d895cc4a60e435644";
-
-    //   getDeviceLocation(imei, token)
-    //     .then((data) => {
-    //       if (data.code === 0) {
-    //         setPosition([parseFloat(data.lat), parseFloat(data.lng)]);
-    //         setAddress(data.address);
-    //       }
-    //     })
-    //     .catch(console.error);
-    // }, []);
+  // Auto-refresh the map when lat/lng change
+  useEffect(() => {
+    // This effect will run every time lat or lng changes
+    // No need to do anything here, as react-leaflet will re-render with new props
+    // But you can log or trigger side effects if needed
+    // console.log("Map position updated:", position);
+  }, [lat, lng]);
 
   return (
     <div className="col-lg-8">
       <MapContainer
-        center={[28.6139, 77.209]} // Delhi's lat, lng
+        key={position.join('-')} // force remount on position change
+        center={position}
         zoom={15}
         scrollWheelZoom={false}
         className="map-container"
@@ -43,27 +40,10 @@ export default function MapView() {
           attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[28.6139, 77.209]}>
-          <Popup>Delhi</Popup>
+        <Marker position={position}>
+          <Popup>{popupText}</Popup>
         </Marker>
       </MapContainer>
-
-      {/* {position && (
-        <MapContainer
-          center={position}
-          zoom={15}
-          scrollWheelZoom={false}
-          className="map-container"
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={position}>
-            <Popup>{address}</Popup>
-          </Marker>
-        </MapContainer>
-      )} */}
     </div>
   );
 }

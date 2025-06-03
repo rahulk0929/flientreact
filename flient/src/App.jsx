@@ -7,10 +7,8 @@ import VehcileDetails from "./Pages/VehcileDetails";
 function App() {
   return (
     <>
-    
      <BrowserRouter>
      <Routes>
-      
       <Route path="/" element={<Layout />}>
       <Route index element={<Index />} /> 
       <Route path="overview" element={<Overview />}></Route>

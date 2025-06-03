@@ -51,9 +51,9 @@ export default function Index() {
        <div className="container-fluid mt-3">
          <div className="row">
            {/* Left Panel */}
-           <RealTime/>
+           <RealTime />
            {/* right Panel */}
-            <MapView/> 
+            <MapView /> 
          </div>
        </div>
      </div>
